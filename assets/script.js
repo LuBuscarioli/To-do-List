@@ -1,3 +1,4 @@
+
 const newTaskInput = document.querySelector('#new-task input');
 const tasksDiv = document.querySelector('#tasks');
 
@@ -61,3 +62,14 @@ const disableButtons = (bool) => {
     });
 };
 
+//remove task from local storage 
+const removeTask = (taskValue) => {
+    localStorage.removeItem(taskValue);
+    displayTasks();
+}
+
+//add tasks to local storage
+const updateStorage = (index, taskValue, completed) => {
+    localStorage.setItem(`${index}_${taskValue}`, completed);
+    displayTasks();
+};
