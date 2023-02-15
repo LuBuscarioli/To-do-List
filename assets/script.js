@@ -73,3 +73,14 @@ const updateStorage = (index, taskValue, completed) => {
     localStorage.setItem(`${index}_${taskValue}`, completed);
     displayTasks();
 };
+
+//function to add new task 
+document.querySelector("push").addEventListener("click", () => {
+    //Enable the edit button
+    disableButtons(false);
+    if(newTaskInput.value.length == 0) {
+        alert("Please enter a task");
+    } else {
+        
+    }
+})
