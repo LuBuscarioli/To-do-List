@@ -75,12 +75,24 @@ const updateStorage = (index, taskValue, completed) => {
 };
 
 //function to add new task 
-document.querySelector("push").addEventListener("click", () => {
-    //Enable the edit button
+document.querySelector("#push").addEventListener("click", () => {
+    //Enable edit button
     disableButtons(false);
     if(newTaskInput.value.length == 0) {
         alert("Please enter a task");
     } else {
-        
+        //store locally and display from local storage
+        if (updateNote == "") {
+            //new task
+            updateStorage(count, newTaskInput.value, false);
+        } else {
+            //update task
+            let existingCount = updateNote.split("_")[0];
+            removeTask(updateNote);
+            updateStorage(existingCount, newTaskInput.value, false);
+            updateNote = "";
+        }
+        count += 1;
+        newTaskInput.value = "";
     }
-})
+});
